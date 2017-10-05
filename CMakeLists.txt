@@ -46,6 +46,11 @@ PACKAGES
     gtk+-3.0
 )
 
+# Translation files
+set (GETTEXT_PACKAGE "${CMAKE_PROJECT_NAME}")
+add_definitions (-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
+add_subdirectory (po)
+
 # tell cmake what to call the executable we just made
 add_executable(${EXEC_NAME} ${VALA_C})
 

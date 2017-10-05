@@ -22,7 +22,7 @@
 int main (string[] args) {
     Gtk.init (ref args);
     var window = new Gtk.Window ();
-    window.title = "Hello World!";
+    window.title = _("Hello World!");
     window.set_border_width (12);
     window.set_position (Gtk.WindowPosition.CENTER);
     window.set_default_size (350, 70);
@@ -30,13 +30,13 @@ int main (string[] args) {
     
     var vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 10);
 
-    var button_hello = new Gtk.Button.with_label ("Click me!");
+    var button_hello = new Gtk.Button.with_label (_("Click me!"));
     button_hello.clicked.connect (() => {
-        button_hello.label = "Hello World!";
+        button_hello.label = _("Hello World!");
         button_hello.set_sensitive (false);
     });
     
-    var label_text = new Gtk.Label("Coucou");
+    var label_text = new Gtk.Label(_("Coucou"));
 
     vbox.add(button_hello);
     vbox.add(label_text);
