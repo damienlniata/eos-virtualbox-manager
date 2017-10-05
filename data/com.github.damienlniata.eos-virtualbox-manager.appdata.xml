@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2017 Damien Leroy <damien.leroy@outlook.fr> -->
+<component type="desktop">
+    <id>com.github.damienlniata.eos-virtualbox-manager.desktop</id>
+    <metadata_license>CC0</metadata_license>
+    <name>Virtualbox Manager</name>
+    <summary>Basic operations on Vms</summary>
+    <description>
+        <p>List by group virtualbox virtual machines. Let them do the basic operations start/stop/pause</p>
+    </description>
+    <custom>
+        <value key="x-appcenter-color-primary">#603461</value>
+        <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
+        <value key="x-appcenter-suggested-price">0</value>
+    </custom>
+</component>

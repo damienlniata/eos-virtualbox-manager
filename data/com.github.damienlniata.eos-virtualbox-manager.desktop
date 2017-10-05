@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Virtualbox Manager
+GenericName=Virtualbox Manager
+Comment=Basic operations on Vms
+Categories=Utility;
+Exec=com.github.damienlniata.eos-virtualbox-manager
+Icon=application-default-icon
+Terminal=false
+Type=Application
+X-GNOME-Gettext-Domain=hello-again
+Keywords=virtualbox;vbox;virtual;
