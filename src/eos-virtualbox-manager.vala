@@ -32,10 +32,10 @@ public class MyVirtualboxManager : Gtk.Application {
         var window = new Gtk.ApplicationWindow (this);
 
         //var window = new Gtk.Window ();
-        window.title = _("Hello World!");
+        //window.title = _("Hello World!");
         window.set_border_width (12);
         window.set_position (Gtk.WindowPosition.CENTER);
-        window.set_default_size (350, 70);
+        window.set_default_size (1000, 500);
         window.destroy.connect (Gtk.main_quit);
         
         var vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 10);
@@ -43,10 +43,26 @@ public class MyVirtualboxManager : Gtk.Application {
         var button_hello = new Gtk.Button.with_label (_("Click me!"));
         button_hello.clicked.connect (() => {
             var notification = new Notification (_("Hello World"));
+            var icon = new GLib.ThemedIcon ("dialog-warning");
+            notification.set_icon (icon);
             notification.set_body (_("This is my first notification!"));
             this.send_notification ("notify.app", notification);
         });
         
+        var header = new Gtk.HeaderBar();
+        //header.title = _("myTitle");
+        //header.subtitle = _("mySubtitle");
+        header.show_close_button = true;
+
+        var header_hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+        var groups = VBoxUtils.GetInfos.getListGroups();
+        foreach (var group in groups) {
+            Gtk.Button button = new Gtk.Button.with_label (group);
+            header_hbox.add(button);
+        }
+        header.add(header_hbox);
+        window.set_titlebar(header);
+
         var label_text = new Gtk.Label(_("Coucou"));
     
         vbox.add(button_hello);

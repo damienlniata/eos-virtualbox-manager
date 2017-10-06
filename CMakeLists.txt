@@ -24,6 +24,8 @@ find_package(PkgConfig)
 
 # now let's actually check for the required dependencies
 pkg_check_modules(DEPS REQUIRED gtk+-3.0)
+pkg_check_modules(DEPS REQUIRED granite)
+pkg_check_modules(DEPS REQUIRED gee-0.8)
 
 add_definitions(${DEPS_CFLAGS})
 link_libraries(${DEPS_LIBRARIES})
@@ -40,10 +42,13 @@ ensure_vala_version("0.16" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C ${EXEC_NAME}
     src/eos-virtualbox-manager.vala
+    src/vboxutils.vala
 
 # tell what libraries to use when compiling
 PACKAGES
     gtk+-3.0
+    granite
+    gee-0.8
 )
 
 # Translation files
