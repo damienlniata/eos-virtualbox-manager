@@ -9,6 +9,8 @@ list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/src)
 
 # where we install data directory (if we have any)
+set (HOMEDIR $ENV{HOME})
+set (HOME_DATADIR ${HOMEDIR}/.local/share/eradio)
 set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 
 # what to call that directory where we install data too
@@ -19,16 +21,24 @@ set (RELEASE_NAME "Virtualbox Manager")
 set (VERSION "0.1")
 set (VERSION_INFO "First Release")
 
+set (CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/src/config.vala)
+set (CONFIG_FILE_REL src/config.vala)
+configure_file (${CMAKE_CURRENT_SOURCE_DIR}/src/config.vala.cmake ${CONFIG_FILE})
+
 # we're about to use pkgconfig to make sure dependencies are installed so let's find pkgconfig first
 find_package(PkgConfig)
 
-# now let's actually check for the required dependencies
-pkg_check_modules(DEPS REQUIRED gtk+-3.0)
-pkg_check_modules(DEPS REQUIRED granite)
-pkg_check_modules(DEPS REQUIRED gee-0.8)
+set (PROJECT_DEPS
+    gtk+-3.0
+    granite
+    gee-0.8
+    libnotify
+)
+
+pkg_check_modules(DEPS REQUIRED ${PROJECT_DEPS})
 
 add_definitions(${DEPS_CFLAGS})
-link_libraries(${DEPS_LIBRARIES})
+link_libraries(${DEPS_LIBRARIES} m)
 link_directories(${DEPS_LIBRARY_DIRS})
 
 # make sure we have vala
@@ -41,14 +51,15 @@ ensure_vala_version("0.16" MINIMUM)
 # files we want to compile
 include(ValaPrecompile)
 vala_precompile(VALA_C ${EXEC_NAME}
-    src/eos-virtualbox-manager.vala
-    src/vboxutils.vala
+    ${CONFIG_FILE_REL}
+    src/main.vala
+    src/application/vbox-application.vala
+    src/ui/windows/vbox-main-window.vala
+    src/utils/vbox-utils.vala
 
 # tell what libraries to use when compiling
 PACKAGES
-    gtk+-3.0
-    granite
-    gee-0.8
+    ${PROJECT_DEPS}
 )
 
 # Translation files

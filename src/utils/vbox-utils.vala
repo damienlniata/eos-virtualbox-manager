@@ -19,14 +19,12 @@
 * Authored by: Damien Leroy <damien.leroy@outlook.fr>
 */
 
-namespace VBoxUtils { 
-    public class GetInfos {
-        public static List<string> getListGroups() {
-            var groups = new List<string>();
-            groups.append("grp1");
-            groups.append("grp2");
-            groups.append("grp3");
-            return groups;
-        }
+public class VBoxUtils.GetInfos {
+    public static List<string> getListGroups() {
+        var groups = new List<string>();
+        groups.append("grp1");
+        groups.append("grp2");
+        groups.append("grp3");
+        return groups;
     }
 }
