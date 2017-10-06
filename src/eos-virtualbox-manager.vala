@@ -19,31 +19,46 @@
 * Authored by: Damien Leroy <damien.leroy@outlook.fr>
 */
 
-int main (string[] args) {
-    Gtk.init (ref args);
-    var window = new Gtk.Window ();
-    window.title = _("Hello World!");
-    window.set_border_width (12);
-    window.set_position (Gtk.WindowPosition.CENTER);
-    window.set_default_size (350, 70);
-    window.destroy.connect (Gtk.main_quit);
+public class MyVirtualboxManager : Gtk.Application {
     
-    var vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 10);
+    public MyVirtualboxManager () {
+        Object (
+            application_id: "com.github.damienlniata.eos-virtualbox-manager",
+            flags: ApplicationFlags.FLAGS_NONE
+        );
+    }
 
-    var button_hello = new Gtk.Button.with_label (_("Click me!"));
-    button_hello.clicked.connect (() => {
-        button_hello.label = _("Hello World!");
-        button_hello.set_sensitive (false);
-    });
+    protected override void activate () {
+        var window = new Gtk.ApplicationWindow (this);
+
+        //var window = new Gtk.Window ();
+        window.title = _("Hello World!");
+        window.set_border_width (12);
+        window.set_position (Gtk.WindowPosition.CENTER);
+        window.set_default_size (350, 70);
+        window.destroy.connect (Gtk.main_quit);
+        
+        var vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 10);
     
-    var label_text = new Gtk.Label(_("Coucou"));
-
-    vbox.add(button_hello);
-    vbox.add(label_text);
-
-    window.add (vbox);
-    window.show_all ();
+        var button_hello = new Gtk.Button.with_label (_("Click me!"));
+        button_hello.clicked.connect (() => {
+            var notification = new Notification (_("Hello World"));
+            notification.set_body (_("This is my first notification!"));
+            this.send_notification ("notify.app", notification);
+        });
+        
+        var label_text = new Gtk.Label(_("Coucou"));
     
-    Gtk.main ();
-    return 0;
+        vbox.add(button_hello);
+        vbox.add(label_text);
+    
+        window.add (vbox);
+    
+        window.show_all();
+    }
+
+    public static int main (string[] args) {
+        var app = new MyVirtualboxManager ();
+        return app.run (args);
+    }
 }

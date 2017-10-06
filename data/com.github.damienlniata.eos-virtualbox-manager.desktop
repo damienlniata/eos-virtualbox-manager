@@ -7,5 +7,6 @@ Exec=com.github.damienlniata.eos-virtualbox-manager
 Icon=application-default-icon
 Terminal=false
 Type=Application
-X-GNOME-Gettext-Domain=hello-again
+X-GNOME-Gettext-Domain=eos-virtualbox-manager
+X-GNOME-UsesNotifications=true
 Keywords=virtualbox;vbox;virtual;

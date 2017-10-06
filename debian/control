@@ -1,0 +1,15 @@
+Source: eos-virtualbox-manager
+Section: x11
+Priority: extra
+Maintainer: Damien Leroy <damien.leroy@outlook.fr>
+Build-Depends: cmake (>= 2.8),
+               cmake-elementary,
+               debhelper (>= 8.0.0),
+               valac-0.26 | valac (>= 0.26)
+Standards-Version: 3.9.3
+
+Package: hello-packaging
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Basic operations on Virtualbox Vms
+ List by group virtualbox virtual machines. Let them do the basic operations start/stop/pause

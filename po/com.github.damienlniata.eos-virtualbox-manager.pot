@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-05 18:43+0200\n"
+"POT-Creation-Date: 2017-10-06 09:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,12 +19,12 @@ msgstr ""
 
 #: ../src/eos-virtualbox-manager.vala:25 ../src/eos-virtualbox-manager.vala:35
 msgid "Hello World!"
-msgstr "aaaa"
+msgstr ""
 
 #: ../src/eos-virtualbox-manager.vala:33
-msgid "Click me!"
-msgstr "bbbb"
+msgid "changed-source-name"
+msgstr ""
 
 #: ../src/eos-virtualbox-manager.vala:39
 msgid "Coucou"
-msgstr "cccc"
+msgstr ""
