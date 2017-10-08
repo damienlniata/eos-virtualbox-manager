@@ -61,11 +61,12 @@ class VBoxManager.Application : Granite.Application {
             initialize ();
         else if (!main_window.visible)
             main_window.show ();
-
     }
 
     public void initialize () {
+        debug("+initialize()");        
         main_window = new VBoxManager.MainWindow();
+        debug("-initialize()");        
     }
 
 }

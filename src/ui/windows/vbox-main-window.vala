@@ -21,8 +21,10 @@
 
 class VBoxManager.MainWindow : Gtk.Window {
     public MainWindow() {
+        debug("Coucou");
         build_interface();
         this.show_all();
+        Gtk.main();
     }
 
     private void build_interface () {
@@ -31,17 +33,20 @@ class VBoxManager.MainWindow : Gtk.Window {
     }
 
     private void create_child_widgets() {
+        debug("+create_child_widgets()");
         var label_text = new Gtk.Label(_("Coucou"));
         this.add(label_text);        
+        debug("-create_child_widgets()");
     }
 
     private void set_window_properties () {
-        this.set_title ("myTitle");
-        this.set_size_request (500, 250);
+        debug("+set_window_properties()");
+        this.set_title (VBoxManager.Application.instance.program_name);
+        this.set_size_request (500, 500);
         this.set_position (Gtk.WindowPosition.CENTER);
         this.resizable = true;
-        this.destroy.connect (Gtk.main_quit);
-        
+        this.destroy.connect (Gtk.main_quit);     
+        debug("-set_window_properties()");
     }
 
 }
